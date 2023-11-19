@@ -24,17 +24,25 @@ namespace _8086_emulator
         public MainWindow()
         {
             InitializeComponent();
+            comboBoxRegister1.Text = "AX";
+            comboBoxRegister2.Text = "BX";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // wyswietl rozne w zaleznosci od combobox content.
-            ComboBoxItem selectedItem = (ComboBoxItem)instructionComboBox.SelectedItem;
 
-            if (selectedItem != null)
+
+            if (comboBoxRegister1.Text != comboBoxRegister2.Text)
             {
-                Trace.WriteLine($"Instruction: {selectedItem.Content.ToString()}");
+                Trace.WriteLine($"Instruction: {comboBoxInstruction.Text}");
+                Trace.WriteLine($"From: {comboBoxRegister1.Text} \tTo: {comboBoxRegister2.Text}");
+            } else
+            {
+                Trace.WriteLine($"Can't {comboBoxInstruction.Text} from {comboBoxRegister1.Text} to {comboBoxRegister2.Text}.");
+                Trace.Write("Please choose different registers");
             }
+
         }
     }
 }

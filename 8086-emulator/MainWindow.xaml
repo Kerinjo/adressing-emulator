@@ -6,14 +6,43 @@
         xmlns:local="clr-namespace:_8086_emulator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
         
-        <ComboBox x:Name="instructionComboBox" HorizontalAlignment="Center" Margin="0,176,0,0" VerticalAlignment="Top" Width="80">
+        <ComboBox x:Name="comboBoxInstruction" HorizontalAlignment="Left" Margin="260,75,0,0" VerticalAlignment="Top" Width="80">
             <ComboBoxItem IsSelected="True">MOV</ComboBoxItem>
             <ComboBoxItem>XCHG</ComboBoxItem>
         </ComboBox>
-        
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="495,177,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
 
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="481,76,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
+        <ComboBox x:Name="comboBoxRegister1" HorizontalAlignment="Left" Margin="345,75,0,0" VerticalAlignment="Top" Height="22" Width="50">
+            <ComboBoxItem IsSelected="True">AX</ComboBoxItem>
+            <ComboBoxItem>BX</ComboBoxItem>
+            <ComboBoxItem>CX</ComboBoxItem>
+            <ComboBoxItem>DX</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="comboBoxRegister2" HorizontalAlignment="Left" Margin="400,75,0,0" VerticalAlignment="Top" Height="22" Width="50">
+            <ComboBoxItem>AX</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">BX</ComboBoxItem>
+            <ComboBoxItem>CX</ComboBoxItem>
+            <ComboBoxItem>DX</ComboBoxItem>
+        </ComboBox>
+
+        <Label Content="Register" HorizontalAlignment="Left" Margin="70,141,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="AX" HorizontalAlignment="Left" Margin="44,189,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerAX" Margin="85,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top">0000</TextBlock>
+
+        <Label Content="BX" HorizontalAlignment="Left" Margin="44,229,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerBX" HorizontalAlignment="Left" Margin="85,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top">FFFF</TextBlock>
+
+        <Label Content="CX" HorizontalAlignment="Left" Margin="44,274,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerCX" Margin="85,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top">FF00</TextBlock>
+
+        <Label Content="DX" HorizontalAlignment="Left" Margin="44,314,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerDX" HorizontalAlignment="Left" Margin="85,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top">00FF</TextBlock>
+        
     </Grid>
+
 </Window>
