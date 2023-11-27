@@ -6,43 +6,63 @@
         xmlns:local="clr-namespace:_8086_emulator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
     <Grid>
-        
-        <ComboBox x:Name="comboBoxInstruction" HorizontalAlignment="Left" Margin="260,75,0,0" VerticalAlignment="Top" Width="80">
+
+        <ComboBox x:Name="comboBoxInstruction" HorizontalAlignment="Left" Margin="260,65,0,0" VerticalAlignment="Top" Width="80">
             <ComboBoxItem IsSelected="True">MOV</ComboBoxItem>
             <ComboBoxItem>XCHG</ComboBoxItem>
         </ComboBox>
 
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="481,76,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
-        <ComboBox x:Name="comboBoxRegister1" HorizontalAlignment="Left" Margin="345,75,0,0" VerticalAlignment="Top" Height="22" Width="50">
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="481,66,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
+        <ComboBox x:Name="comboBoxRegister1" HorizontalAlignment="Left" Margin="345,65,0,0" VerticalAlignment="Top" Height="22" Width="50">
             <ComboBoxItem IsSelected="True">AX</ComboBoxItem>
             <ComboBoxItem>BX</ComboBoxItem>
             <ComboBoxItem>CX</ComboBoxItem>
             <ComboBoxItem>DX</ComboBoxItem>
         </ComboBox>
 
-        <ComboBox x:Name="comboBoxRegister2" HorizontalAlignment="Left" Margin="400,75,0,0" VerticalAlignment="Top" Height="22" Width="50">
+        <ComboBox x:Name="comboBoxRegister2" HorizontalAlignment="Left" Margin="400,65,0,0" VerticalAlignment="Top" Height="22" Width="50">
             <ComboBoxItem>AX</ComboBoxItem>
             <ComboBoxItem IsSelected="True">BX</ComboBoxItem>
             <ComboBoxItem>CX</ComboBoxItem>
             <ComboBoxItem>DX</ComboBoxItem>
         </ComboBox>
 
-        <Label Content="Register" HorizontalAlignment="Left" Margin="70,141,0,0" VerticalAlignment="Top"/>
+        <!--Register values display-->
+        <Label Content="Register" HorizontalAlignment="Left" Margin="56,124,0,0" VerticalAlignment="Top"/>
 
-        <Label Content="AX" HorizontalAlignment="Left" Margin="44,189,0,0" VerticalAlignment="Top" Width="24"/>
-        <TextBlock x:Name="registerAX" Margin="85,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top">0000</TextBlock>
+        <Label Content="AX" HorizontalAlignment="Left" Margin="44,160,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerAX" HorizontalAlignment="Left" Margin="85,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38">0000</TextBlock>
 
-        <Label Content="BX" HorizontalAlignment="Left" Margin="44,229,0,0" VerticalAlignment="Top" Width="24"/>
-        <TextBlock x:Name="registerBX" HorizontalAlignment="Left" Margin="85,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top">FFFF</TextBlock>
+        <Label Content="BX" HorizontalAlignment="Left" Margin="44,200,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerBX" HorizontalAlignment="Left" Margin="85,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38">FFFF</TextBlock>
 
-        <Label Content="CX" HorizontalAlignment="Left" Margin="44,274,0,0" VerticalAlignment="Top" Width="24"/>
-        <TextBlock x:Name="registerCX" Margin="85,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top">FF00</TextBlock>
+        <Label Content="CX" HorizontalAlignment="Left" Margin="44,240,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerCX" HorizontalAlignment="Left" Margin="85,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38">FF00</TextBlock>
 
-        <Label Content="DX" HorizontalAlignment="Left" Margin="44,314,0,0" VerticalAlignment="Top" Width="24"/>
-        <TextBlock x:Name="registerDX" HorizontalAlignment="Left" Margin="85,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top">00FF</TextBlock>
-        
+        <Label Content="DX" HorizontalAlignment="Left" Margin="44,280,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBlock x:Name="registerDX" HorizontalAlignment="Left" Margin="85,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38">00FF</TextBlock>
+
+        <!--Custom values input-->
+        <Label Content="Custom values" HorizontalAlignment="Left" Margin="150,124,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="registerAX_Input" HorizontalAlignment="Left" Margin="150,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,165,0,0" VerticalAlignment="Top" Width="42"/>
+
+        <TextBox x:Name="registerBX_Input" HorizontalAlignment="Left" Margin="150,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,205,0,0" VerticalAlignment="Top" Width="42"/>
+
+        <TextBox x:Name="registerCX_Input" HorizontalAlignment="Left" Margin="150,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,245,0,0" VerticalAlignment="Top" Width="42"/>
+
+        <TextBox x:Name="registerDX_Input" HorizontalAlignment="Left" Margin="150,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,285,0,0" VerticalAlignment="Top" Width="42"/>
+
+        <!--Register values button controls-->
+        <Button Content="RESET" HorizontalAlignment="Left" Margin="201,347,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button Content="RANDOM" HorizontalAlignment="Left" Margin="120,347,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button Content="ZEROS" HorizontalAlignment="Left" Margin="39,347,0,0" VerticalAlignment="Top" Width="65"/>
+
     </Grid>
 
 </Window>

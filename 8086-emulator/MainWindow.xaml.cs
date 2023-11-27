@@ -43,6 +43,9 @@ namespace _8086_emulator
                 Trace.Write("Please choose different registers");
             }
 
+            // We want a RESET and RANDOM button
+            // We also want ACTUAL registers
+            // And the ability to write to them.
         }
     }
 }
