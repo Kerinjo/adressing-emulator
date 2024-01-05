@@ -47,21 +47,20 @@
         <!--Custom values input-->
         <Label Content="Custom values" HorizontalAlignment="Left" Margin="150,124,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="registerAX_Input" HorizontalAlignment="Left" Margin="150,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
-        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,165,0,0" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,165,0,0" VerticalAlignment="Top" Width="42" Click="InsertManualValueAX"/>
 
         <TextBox x:Name="registerBX_Input" HorizontalAlignment="Left" Margin="150,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
-        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,205,0,0" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,205,0,0" VerticalAlignment="Top" Width="42" Click="InsertManualValueBX"/>
 
         <TextBox x:Name="registerCX_Input" HorizontalAlignment="Left" Margin="150,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
-        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,245,0,0" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,245,0,0" VerticalAlignment="Top" Width="42" Click="InsertManualValueCX"/>
 
         <TextBox x:Name="registerDX_Input" HorizontalAlignment="Left" Margin="150,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" MaxLength="4"></TextBox>
-        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,285,0,0" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="200,285,0,0" VerticalAlignment="Top" Width="42" Click="InsertManualValueDX"/>
 
         <!--Register values button controls-->
-        <Button Content="RESET" HorizontalAlignment="Left" Margin="201,347,0,0" VerticalAlignment="Top" Width="65"/>
-        <Button Content="RANDOM" HorizontalAlignment="Left" Margin="120,347,0,0" VerticalAlignment="Top" Width="65"/>
-        <Button Content="ZEROS" HorizontalAlignment="Left" Margin="39,347,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button Content="RESET" HorizontalAlignment="Left" Margin="139,347,0,0" VerticalAlignment="Top" Width="65" Click="ResetRegisterValues"/>
+        <Button Content="RANDOM" HorizontalAlignment="Left" Margin="46,347,0,0" VerticalAlignment="Top" Width="65" Click="RandomRegisterValues"/>
 
     </Grid>
 
