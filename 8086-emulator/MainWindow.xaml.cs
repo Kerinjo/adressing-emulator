@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,25 +19,85 @@ using System.Windows.Shapes;
 
 namespace _8086_emulator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    public class RegisterManager
+    {
+        private Dictionary<string, TextBlock> registerDictionary;
+
+        public RegisterManager(TextBlock registerAX, TextBlock registerBX, TextBlock registerCX, TextBlock registerDX)
+        {
+            // Initialize the dictionary in the constructor
+            registerDictionary = new Dictionary<string, TextBlock>
+            {
+                { "registerAX", registerAX },
+                { "registerBX", registerBX },
+                { "registerCX", registerCX },
+                { "registerDX", registerDX }
+                // Add more registers as needed
+            };
+        }
+
+        // Method to get the TextBlock.Text for a given register name
+        public string GetRegisterText(string registerName)
+        {
+            if (registerDictionary.TryGetValue(registerName, out TextBlock textBlock))
+            {
+                return textBlock.Text;
+            }
+            else
+            {
+                Console.WriteLine($"TextBlock for register {registerName} not found.");
+                return string.Empty;
+            }
+        }
+        public void Mov(string register_one, string register_two)
+        {
+            registerDictionary[register_one].Text = registerDictionary[register_two].Text;
+        }
+
+        public void Xchg(string register_one, string register_two)
+        {
+            string temp = registerDictionary[register_one].Text;
+            registerDictionary[register_one].Text = registerDictionary[register_two].Text;
+            registerDictionary[register_two].Text = temp;
+        }
+    }
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            comboBoxRegister1.Text = "AX";
-            comboBoxRegister2.Text = "BX";
+
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // wyswietl rozne w zaleznosci od combobox content.
 
 
+
             if (comboBoxRegister1.Text != comboBoxRegister2.Text)
             {
+                // Can't I simply pass regDict[registerLabel] to RegisterManager? instead of making dict each time
+                RegisterManager registerManager = new RegisterManager(registerAX, registerBX, registerCX, registerDX);
+
+
+                string instruction = comboBoxInstruction.Text;
+                string register_one = "register" + comboBoxRegister1.Text;
+                string register_two = "register" + comboBoxRegister2.Text;
+
+                string res = registerManager.GetRegisterText(register_one);
+                
+                if (instruction == "MOV")
+                {
+                    registerManager.Mov(register_one, register_two);
+                }
+                if (instruction == "XCHG")
+                {
+                    registerManager.Xchg(register_one, register_two);
+                }
+
                 Trace.WriteLine($"Instruction: {comboBoxInstruction.Text}");
                 Trace.WriteLine($"From: {comboBoxRegister1.Text} \tTo: {comboBoxRegister2.Text}");
             }
