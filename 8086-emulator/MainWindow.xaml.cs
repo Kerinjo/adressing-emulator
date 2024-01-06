@@ -19,49 +19,6 @@ using System.Windows.Shapes;
 
 namespace _8086_emulator
 {
-    public class RegisterManager
-    {
-        private Dictionary<string, TextBlock> registerDictionary;
-
-        public RegisterManager(TextBlock registerAX, TextBlock registerBX, TextBlock registerCX, TextBlock registerDX)
-        {
-            // Initialize the dictionary in the constructor
-            registerDictionary = new Dictionary<string, TextBlock>
-            {
-                { "registerAX", registerAX },
-                { "registerBX", registerBX },
-                { "registerCX", registerCX },
-                { "registerDX", registerDX }
-                // Add more registers as needed
-            };
-        }
-
-        // Method to get the TextBlock.Text for a given register name
-        public string GetRegisterText(string registerName)
-        {
-            if (registerDictionary.TryGetValue(registerName, out TextBlock textBlock))
-            {
-                return textBlock.Text;
-            }
-            else
-            {
-                Console.WriteLine($"TextBlock for register {registerName} not found.");
-                return string.Empty;
-            }
-        }
-        public void Mov(string register_one, string register_two)
-        {
-            registerDictionary[register_one].Text = registerDictionary[register_two].Text;
-        }
-
-        public void Xchg(string register_one, string register_two)
-        {
-            string temp = registerDictionary[register_one].Text;
-            registerDictionary[register_one].Text = registerDictionary[register_two].Text;
-            registerDictionary[register_two].Text = temp;
-        }
-    }
-
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -73,13 +30,8 @@ namespace _8086_emulator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // wyswietl rozne w zaleznosci od combobox content.
-
-
-
             if (comboBoxRegister1.Text != comboBoxRegister2.Text)
             {
-                // Can't I simply pass regDict[registerLabel] to RegisterManager? instead of making dict each time
                 RegisterManager registerManager = new RegisterManager(registerAX, registerBX, registerCX, registerDX);
 
 
@@ -106,7 +58,6 @@ namespace _8086_emulator
                 Trace.WriteLine($"Can't {comboBoxInstruction.Text} from {comboBoxRegister1.Text} to {comboBoxRegister2.Text}.");
                 Trace.Write("Please choose different registers");
             }
-            // And the ability to write to them.
         }
 
         private void HandleInput(string input, TextBlock register)
